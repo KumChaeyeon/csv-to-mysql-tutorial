@@ -156,9 +156,9 @@ pip install pandas pymysql
 
 ```sql
 
-CREATE DATABASE tutorial\_db;
+CREATE DATABASE tutorial_db;
 
-USE tutorial\_db;
+USE tutorial_db;
 
 
 
@@ -246,7 +246,7 @@ import pymysql
 
 
 
-data = pd.read\_csv("orders.csv")
+data = pd.read_csv("orders.csv")
 
 
 
@@ -258,7 +258,7 @@ user="root",
 
 password="1234",
 
-database="tutorial\_db"
+database="tutorial_db"
 
 )
 
@@ -268,11 +268,11 @@ cursor = conn.cursor()
 
 
 
-for \_, row in data.iterrows():
+for _, row in data.iterrows():
 
 sql = "INSERT INTO orders (product, price) VALUES (%s, %s)"
 
-cursor.execute(sql, (row\["product"], row\["price"]))
+cursor.execute(sql, (row["product"], row["price"]))
 
 
 
@@ -304,7 +304,7 @@ print("데이터 저장 완료")
 
 ```python
 
-data = pd.read\_csv("orders.csv")
+data = pd.read_csv("orders.csv")
 
 ```
 
@@ -326,7 +326,7 @@ user="root",
 
 password="1234",
 
-database="tutorial\_db"
+database="tutorial_db"
 
 )
 
@@ -346,11 +346,11 @@ cursor = conn.cursor()
 
 
 
-for \_, row in data.iterrows():
+for _, row in data.iterrows():
 
 sql = "INSERT INTO orders (product, price) VALUES (%s, %s)"
 
-cursor.execute(sql, (row\["product"], row\["price"]))
+cursor.execute(sql, (row["product"], row["price"]))
 
 ```
 
@@ -440,7 +440,7 @@ MySQL 실행
 
 USE tutorial\_db;
 
-SELECT \* FROM orders;
+SELECT * FROM orders;
 
 ```
 
