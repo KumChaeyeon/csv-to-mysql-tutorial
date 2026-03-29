@@ -1,4 +1,4 @@
-\# Python과 MySQL을 이용한 CSV 데이터 저장 구현
+# Python과 MySQL을 이용한 CSV 데이터 저장 구현
 
 
 
@@ -10,11 +10,11 @@
 
 
 
-\---
+---
 
 
 
-\## 1. 학습목표
+## 1. 학습목표
 
 
 
@@ -38,39 +38,39 @@
 
 
 
-\---
+---
 
 
 
-\## 2. 목차
+## 2. 목차
 
 
 
-1\. 개발 환경 준비
+1. 개발 환경 준비
 
-2\. 데이터베이스 생성
+2. 데이터베이스 생성
 
-3\. 프로젝트 파일 생성
+3. 프로젝트 파일 생성
 
-4\. Python 코드 작성
+4. Python 코드 작성
 
-5\. 프로그램 실행
+5. 프로그램 실행
 
-6\. 실행 결과 확인
+6. 실행 결과 확인
 
-7\. 활용 예시
-
-
-
-\---
+7. 활용 예시
 
 
 
-\## 3. 개발 환경 준비
+---
 
 
 
-\### 1) Python 설치
+## 3. 개발 환경 준비
+
+
+
+### 1) Python 설치
 
 
 
@@ -98,7 +98,7 @@ python --version
 
 
 
-\### 2) MySQL 설치
+### 2) MySQL 설치
 
 
 
@@ -122,7 +122,7 @@ https://dev.mysql.com/downloads/installer/
 
 
 
-\### 3) 라이브러리 설치
+### 3) 라이브러리 설치
 
 
 
@@ -138,7 +138,7 @@ pip install pandas pymysql
 
 
 
-\## 4. 데이터베이스 생성
+## 4. 데이터베이스 생성
 
 
 
@@ -164,11 +164,11 @@ USE tutorial\_db;
 
 CREATE TABLE orders (
 
-&#x20;   id INT AUTO\_INCREMENT PRIMARY KEY,
+id INT AUTO\_INCREMENT PRIMARY KEY,
 
-&#x20;   product VARCHAR(100),
+product VARCHAR(100),
 
-&#x20;   price INT
+price INT
 
 );
 
@@ -176,15 +176,15 @@ CREATE TABLE orders (
 
 
 
-\---
+---
 
 
 
-\## 5. 프로젝트 파일 생성
+## 5. 프로젝트 파일 생성
 
 
 
-\### 1) 폴더 생성
+### 1) 폴더 생성
 
 
 
@@ -198,7 +198,7 @@ cd csv-to-mysql
 
 
 
-\### 2) CSV 파일 생성
+### 2) CSV 파일 생성
 
 
 
@@ -222,7 +222,7 @@ Eraser,200
 
 
 
-\### 3) Python 파일 생성
+### 3) Python 파일 생성
 
 
 
@@ -230,11 +230,11 @@ Eraser,200
 
 
 
-\---
+---
 
 
 
-\## 6. Python 코드 작성
+## 6. Python 코드 작성
 
 
 
@@ -252,13 +252,13 @@ data = pd.read\_csv("orders.csv")
 
 conn = pymysql.connect(
 
-&#x20;   host="localhost",
+host="localhost",
 
-&#x20;   user="root",
+user="root",
 
-&#x20;   password="1234",
+password="1234",
 
-&#x20;   database="tutorial\_db"
+database="tutorial\_db"
 
 )
 
@@ -270,9 +270,9 @@ cursor = conn.cursor()
 
 for \_, row in data.iterrows():
 
-&#x20;   sql = "INSERT INTO orders (product, price) VALUES (%s, %s)"
+sql = "INSERT INTO orders (product, price) VALUES (%s, %s)"
 
-&#x20;   cursor.execute(sql, (row\["product"], row\["price"]))
+cursor.execute(sql, (row\["product"], row\["price"]))
 
 
 
@@ -288,17 +288,17 @@ print("데이터 저장 완료")
 
 
 
-\---
+---
 
 
 
-\## 7. 코드 설명
+## 7. 코드 설명
 
 
 
-\- CSV 파일 읽기
+### 1) CSV 파일 읽기
 
-&#x20;   - CSV 데이터를 Python에서 사용할 수 있는 형태로 변환한다.
+- CSV 데이터를 Python에서 사용할 수 있는 형태로 변환한다.
 
 
 
@@ -310,9 +310,9 @@ data = pd.read\_csv("orders.csv")
 
 
 
-\- 데이터베이스 연결
+### 2) 데이터베이스 연결
 
-&#x20;   - Python 프로그램과 MySQL을 연결한다.
+- Python 프로그램과 MySQL을 연결한다.
 
 
 
@@ -320,13 +320,13 @@ data = pd.read\_csv("orders.csv")
 
 conn = pymysql.connect(
 
-&#x20;   host="localhost",
+host="localhost",
 
-&#x20;   user="root",
+user="root",
 
-&#x20;   password="1234",
+password="1234",
 
-&#x20;   database="tutorial\_db"
+database="tutorial\_db"
 
 )
 
@@ -334,9 +334,9 @@ conn = pymysql.connect(
 
 
 
-\- 데이터 저장
+### 3) 데이터 저장
 
-&#x20;   - 각 행의 데이터를 반복하여 DB에 저장한다.
+- 각 행의 데이터를 반복하여 DB에 저장한다.
 
 
 
@@ -348,17 +348,17 @@ cursor = conn.cursor()
 
 for \_, row in data.iterrows():
 
-&#x20;   sql = "INSERT INTO orders (product, price) VALUES (%s, %s)"
+sql = "INSERT INTO orders (product, price) VALUES (%s, %s)"
 
-&#x20;   cursor.execute(sql, (row\["product"], row\["price"]))
+cursor.execute(sql, (row\["product"], row\["price"]))
 
 ```
 
 
 
-\- 저장 반영
+### 4) 저장 반영
 
-&#x20;   - 데이터를 실제 DB에 반영한다.
+- 데이터를 실제 DB에 반영한다.
 
 
 
@@ -370,9 +370,9 @@ conn.commit()
 
 
 
-\- 연결 종료
+### 5) 연결 종료
 
-&#x20;   - DB 연결을 종료한다.
+- DB 연결을 종료한다.
 
 
 
@@ -384,11 +384,11 @@ conn.close()
 
 
 
-\---
+---
 
 
 
-\## 8. 프로그램 실행
+## 8. 프로그램 실행
 
 
 
@@ -400,11 +400,11 @@ python main.py
 
 
 
-\---
+---
 
 
 
-\## 9. 실행 결과
+## 9. 실행 결과
 
 
 
@@ -416,11 +416,11 @@ python main.py
 
 
 
-\---
+---
 
 
 
-\## 10. 데이터 확인
+## 10. 데이터 확인
 
 
 
@@ -468,11 +468,11 @@ SELECT \* FROM orders;
 
 
 
-\---
+---
 
 
 
-\## 11. 전체 흐름 정리
+## 11. 전체 흐름 정리
 
 
 
@@ -480,11 +480,11 @@ CSV 파일 → Python → MySQL DB
 
 
 
-\---
+---
 
 
 
-\## 12. 활용 예시
+## 12. 활용 예시
 
 
 
@@ -508,11 +508,11 @@ CSV 파일 → Python → MySQL DB
 
 
 
-\---
+---
 
 
 
-\## 13. 주의사항
+## 13. 주의사항
 
 
 
@@ -528,11 +528,11 @@ CSV 파일 → Python → MySQL DB
 
 
 
-\---
+---
 
 
 
-\## 14. 결론
+## 14. 결론
 
 
 
