@@ -163,13 +163,9 @@ USE tutorial_db;
 
 
 CREATE TABLE orders (
-
-id INT AUTO\_INCREMENT PRIMARY KEY,
-
-product VARCHAR(100),
-
-price INT
-
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product VARCHAR(100),
+    price INT
 );
 
 ```
@@ -269,10 +265,8 @@ cursor = conn.cursor()
 
 
 for _, row in data.iterrows():
-
-sql = "INSERT INTO orders (product, price) VALUES (%s, %s)"
-
-cursor.execute(sql, (row["product"], row["price"]))
+    sql = "INSERT INTO orders (product, price) VALUES (%s, %s)"
+    cursor.execute(sql, (row["product"], row["price"]))
 
 
 
@@ -347,10 +341,8 @@ cursor = conn.cursor()
 
 
 for _, row in data.iterrows():
-
-sql = "INSERT INTO orders (product, price) VALUES (%s, %s)"
-
-cursor.execute(sql, (row["product"], row["price"]))
+    sql = "INSERT INTO orders (product, price) VALUES (%s, %s)"
+    cursor.execute(sql, (row["product"], row["price"]))
 
 ```
 
